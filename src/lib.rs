@@ -3,6 +3,12 @@ pub mod matching;
 pub mod utxo;
 pub mod verification;
 
+// Re-exports for SDK functions
+pub use utxo::fetch::fetch_utxos;
+pub use utxo::storage::{initialize_db, store_utxos};
+pub use nostr::relay::{discover_relays, send_message};
+pub use verification::verify_transaction;
+
 // Example re-export
 pub use anchor::initialize_anchor;
 
