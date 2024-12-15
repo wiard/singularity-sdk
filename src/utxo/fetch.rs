@@ -1,8 +1,10 @@
-use reqwest::Error;
+use reqwest::blocking::Client;
+use serde_json::Value;
 
-pub async fn fetch_utxos(address: &str) -> Result<Vec<String>, Error> {
+pub fn fetch_utxos(address: &str) -> Result<Value, reqwest::Error> {
+    let client = Client::new();
     let url = format!("https://blockstream.info/api/address/{}/utxo", address);
-    let response = reqwest::get(&url).await?.json::<Vec<String>>().await?;
+    let response = client.get(&url).send()?.json()?;
     Ok(response)
 }
 
