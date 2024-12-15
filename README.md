@@ -128,6 +128,6 @@ Outixs SDK is a lightweight toolkit designed to interface between Bitcoin UTXOs 
 You can download the Outixs SDK by cloning the GitHub repository:
 
 
-git clone https://github.com/your-username/outixs.git
+git clone [(https://github.com/wiard/Outixs-SDK.git)]
 cd outixs
 
