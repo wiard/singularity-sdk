@@ -1,8 +1,22 @@
-/target
+# Ignore target directory (build artifacts)
+/target/
 
+# Ignore Cargo.lock for libraries (but not for binaries)
+Cargo.lock
 
-# Added by cargo
-#
-# already existing elements were commented out
+# Ignore editor/IDE files
+.idea/
+.vscode/
+*.swp
+*~
+*.log
 
-#/target
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore debug and example build artifacts
+debug/
+examples/
+*.dSYM/
+
