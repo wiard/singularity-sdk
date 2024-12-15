@@ -8,9 +8,13 @@ Outixs is a lightweight, modular SDK designed for event-based systems, with a fo
 - **Matching System**: Match entities efficiently (future development).
 - **Verification Tools**: Ensure data integrity (future development).
 
+<<<<<<< HEAD
 ## Getting Started
 1. Clone the repository:
    ```bash
    git clone https://github.com/wiard/Outixs-SDK.git
    cd Outixs-SDK
+=======
+
+>>>>>>> 9592b6139459d3076ccb104ae88cdd78682e44b2
 
