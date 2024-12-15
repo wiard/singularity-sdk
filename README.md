@@ -92,6 +92,8 @@ outixs
 ├── src
 │   ├── anchor
 │   │   └── mod.rs
+│   ├── compression
+│   │   └── mod.rs
 │   ├── lib.rs
 │   ├── matching
 │   │   └── mod.rs
@@ -100,6 +102,7 @@ outixs
 │   │   └── relay.rs
 │   ├── transaction
 │   │   ├── mod.rs
+│   │   ├── processor.rs
 │   │   └── structures.rs
 │   ├── utxo
 │   │   ├── fetch.rs
@@ -117,6 +120,7 @@ outixs
     ├── test_verification.rs
     ├── utxo_tests.rs
     └── verification_tests.rs
+
 ```
 
 Here’s the improved GitHub Markdown markup:
