@@ -82,7 +82,7 @@ fn main() {
 
     println!("Created transaction: {:?}", transaction);
 }
-
+```plaintext
 outixs
 ├── Cargo.lock
 ├── Cargo.toml
@@ -117,7 +117,7 @@ outixs
     ├── test_verification.rs
     ├── utxo_tests.rs
     └── verification_tests.rs
-
+```
 
 # Outixs SDK
 
