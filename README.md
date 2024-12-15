@@ -14,7 +14,4 @@ Outixs is a lightweight, modular SDK designed for event-based systems, with a fo
    ```bash
    git clone https://github.com/wiard/Outixs-SDK.git
    cd Outixs-SDK
-=======
-
->>>>>>> 9592b6139459d3076ccb104ae88cdd78682e44b2
 
