@@ -6,6 +6,6 @@ Outixs SDK is a lightweight toolkit designed to facilitate decentralized develop
 
 Clone the repository:
 ```bash
-git clone https://github.com/<your-username>/outixs-sdk.git
+git clone https://github.com/wiard/outixs-sdk.git
 cd outixs-sdk
 
