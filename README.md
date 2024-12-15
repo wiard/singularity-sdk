@@ -123,63 +123,6 @@ outixs
 
 ```
 
-Here’s the improved GitHub Markdown markup:
-
-```markdown
-# Outixs SDK
-
-The **Outixs SDK** provides an interface for working with Bitcoin UTXOs and Nostr events. It facilitates transaction management off-chain and pushes compressed, validated transactions back to Bitcoin for immutable proof.
-
-## Example Usage
-
-```rust
-use outixs::transaction::OutixsTransaction;
-
-
-fn main() {
-    let transaction = OutixsTransaction::new(...);
-    println!("Created transaction: {:?}", transaction);
-}
-```
-
-## Project Structure
-
-```plaintext
-outixs
-├── Cargo.lock
-├── Cargo.toml
-├── README.md
-├── examples
-│   └── usage.rs
-├── src
-│   ├── anchor
-│   │   └── mod.rs
-│   ├── lib.rs
-│   ├── matching
-│   │   └── mod.rs
-│   ├── nostr
-│   │   ├── mod.rs
-│   │   └── relay.rs
-│   ├── transaction
-│   │   ├── mod.rs
-│   │   └── structures.rs
-│   ├── utxo
-│   │   ├── fetch.rs
-│   │   ├── mod.rs
-│   │   └── storage.rs
-│   └── verification
-│       └── mod.rs
-└── tests
-    ├── nostr_tests.rs
-    ├── test_anchor.rs
-    ├── test_matching.rs
-    ├── test_nostr.rs
-    ├── test_transaction.rs
-    ├── test_utxo.rs
-    ├── test_verification.rs
-    ├── utxo_tests.rs
-    └── verification_tests.rs
-```
 
 ## Features
 
