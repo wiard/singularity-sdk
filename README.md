@@ -119,15 +119,99 @@ outixs
     └── verification_tests.rs
 ```
 
+Here’s the improved GitHub Markdown markup:
+
+```markdown
 # Outixs SDK
 
-Outixs SDK is a lightweight toolkit designed to interface between Bitcoin UTXOs and the event-based nature of Nostr. This SDK provides a foundational data structure and tools to fetch, manage, and verify transactions both off-chain and on-chain.
+The **Outixs SDK** provides an interface for working with Bitcoin UTXOs and Nostr events. It facilitates transaction management off-chain and pushes compressed, validated transactions back to Bitcoin for immutable proof.
 
-## Download and Installation
+## Example Usage
 
-You can download the Outixs SDK by cloning the GitHub repository:
+```rust
+use outixs::transaction::OutixsTransaction;
 
- ```bash
-git clone [(https://github.com/wiard/Outixs-SDK.git)]
+
+fn main() {
+    let transaction = OutixsTransaction::new(...);
+    println!("Created transaction: {:?}", transaction);
+}
+```
+
+## Project Structure
+
+```plaintext
+outixs
+├── Cargo.lock
+├── Cargo.toml
+├── README.md
+├── examples
+│   └── usage.rs
+├── src
+│   ├── anchor
+│   │   └── mod.rs
+│   ├── lib.rs
+│   ├── matching
+│   │   └── mod.rs
+│   ├── nostr
+│   │   ├── mod.rs
+│   │   └── relay.rs
+│   ├── transaction
+│   │   ├── mod.rs
+│   │   └── structures.rs
+│   ├── utxo
+│   │   ├── fetch.rs
+│   │   ├── mod.rs
+│   │   └── storage.rs
+│   └── verification
+│       └── mod.rs
+└── tests
+    ├── nostr_tests.rs
+    ├── test_anchor.rs
+    ├── test_matching.rs
+    ├── test_nostr.rs
+    ├── test_transaction.rs
+    ├── test_utxo.rs
+    ├── test_verification.rs
+    ├── utxo_tests.rs
+    └── verification_tests.rs
+```
+
+## Features
+
+- **Bitcoin Integration**: Fetch and manage UTXOs from Bitcoin.
+- **Nostr Event Mapping**: Interface between Bitcoin transactions and Nostr events.
+- **Off-chain Transactions**: Create, validate, and match transactions off-chain.
+- **Immutable Proofs**: Compress validated transactions and store them on-chain with `OP_RETURN`.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/wiard/Outixs-SDK.git
+```
+
+Navigate to the directory:
+
+```bash
 cd outixs
- ```
+```
+
+Build the project:
+
+```bash
+cargo build
+```
+
+Run the tests:
+
+```bash
+cargo test
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue for suggestions and improvements.
+```
+
