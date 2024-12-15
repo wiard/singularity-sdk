@@ -1,30 +1,42 @@
-use outixs::{fetch_utxos, initialize_db, store_utxos, discover_relays, send_message, verify_transaction};
+use outixs::{
+    utxo::{fetch_utxos, storage::{initialize_db, store_utxos}},
+    nostr::relay::{discover_relays, send_message},
+    verification::verify_transaction,
+};
 
-#[tokio::main]
-async fn main() {
-    // Step 1: Fetch UTXOs
-    let address = "your_bitcoin_address_here";
-    let utxos = fetch_utxos(address).await.expect("Failed to fetch UTXOs");
-    println!("Fetched UTXOs: {:?}", utxos);
+fn main() {
+    // Example usage of fetch_utxos
+    let address = "some_bitcoin_address";
+    match fetch_utxos(address) {
+        Ok(utxos) => {
+            println!("Fetched UTXOs: {:?}", utxos);
 
-    // Step 2: Store UTXOs
-    let conn = initialize_db("utxos.db").expect("Failed to initialize database");
-    store_utxos(&conn, vec![
-        ("txid1".to_string(), 0, 100000, "script_pubkey".to_string()),
-    ])
-    .expect("Failed to store UTXOs");
+            // Initialize database
+            let mut conn = initialize_db().expect("Failed to initialize database");
 
-    // Step 3: Discover Nostr Relays
-    let relays = discover_relays().await;
-    println!("Discovered relays: {:?}", relays);
+            // Store UTXOs in database
+            store_utxos(&mut conn, &utxos).expect("Failed to store UTXOs");
+        }
+        Err(err) => {
+            eprintln!("Error fetching UTXOs: {}", err);
+        }
+    }
 
-    // Step 4: Send a message
-    let relay = &relays[0];
-    send_message(relay, "Hello, Nostr!").await.expect("Failed to send message");
+    // Discover Nostr relays
+    match discover_relays() {
+        Ok(relays) => println!("Discovered relays: {:?}", relays),
+        Err(err) => eprintln!("Error discovering relays: {}", err),
+    }
 
-    // Step 5: Verify a transaction
-    let txid = "your_txid_here";
-    let is_confirmed = verify_transaction(txid).await.expect("Failed to verify transaction");
-    println!("Transaction confirmed: {}", is_confirmed);
+    // Send a message via Nostr relay
+    if let Err(err) = send_message("some_relay_url", "Hello, Nostr!") {
+        eprintln!("Error sending message: {}", err);
+    }
+
+    // Verify a transaction
+    match verify_transaction("some_transaction_id") {
+        Ok(verification) => println!("Transaction verified: {:?}", verification),
+        Err(err) => eprintln!("Error verifying transaction: {}", err),
+    }
 }
 

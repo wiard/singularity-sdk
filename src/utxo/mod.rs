@@ -1,11 +1,6 @@
 pub mod fetch;
 pub mod storage;
 
-pub fn process_utxo(tx_id: &str) -> Result<String, String> {
-    if tx_id.is_empty() {
-        Err("Transaction ID is empty".to_string())
-    } else {
-        Ok(format!("Processed UTXO with tx_id: {}", tx_id))
-    }
-}
+pub use fetch::fetch_utxos; // Re-export fetch_utxos for external usage
+pub use storage::{initialize_db, store_utxos}; // Re-export storage functions
 

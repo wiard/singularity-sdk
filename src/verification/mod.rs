@@ -1,8 +1,9 @@
-use reqwest::Error;
+use reqwest::blocking::Client;
+use serde_json::Value;
 
-pub async fn verify_transaction(txid: &str) -> Result<bool, Error> {
-    let url = format!("https://blockstream.info/api/tx/{}/status", txid);
-    let response: serde_json::Value = reqwest::get(&url).await?.json().await?;
-    Ok(response["confirmed"].as_bool().unwrap_or(false))
+pub fn verify_transaction(tx_id: &str) -> Result<Value, reqwest::Error> {
+    let url = format!("https://blockstream.info/api/tx/{}", tx_id);
+    let response = Client::new().get(&url).send()?.json()?;
+    Ok(response)
 }
 
