@@ -83,7 +83,10 @@ fn main() {
     println!("Created transaction: {:?}", transaction);
    }
 }
+```
+### File Structure
 
+```plaintext
 outixs
 ├── Cargo.lock
 ├── Cargo.toml
@@ -121,7 +124,6 @@ outixs
     ├── test_verification.rs
     ├── utxo_tests.rs
     └── verification_tests.rs
-
 
 ```
 ## Features
