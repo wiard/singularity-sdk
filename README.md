@@ -82,9 +82,9 @@ fn main() {
 
     println!("Created transaction: {:?}", transaction);
 }
-
 }
-```plaintext
+
+
 outixs
 ├── Cargo.lock
 ├── Cargo.toml
@@ -123,9 +123,8 @@ outixs
     ├── utxo_tests.rs
     └── verification_tests.rs
 
+
 ```
-
-
 ## Features
 
 - **Bitcoin Integration**: Fetch and manage UTXOs from Bitcoin.
