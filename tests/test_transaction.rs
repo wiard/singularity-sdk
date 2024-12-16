@@ -1,48 +1,40 @@
-use outixs::transaction::{OutixsTransaction, UTXOInput, UTXOOutput, NostrEvent, TransactionState};
+#[cfg(test)]
+mod tests {
+    use super::super::transaction::structures::*;
 
-#[test]
-fn test_transaction() {
-    // Create a UTXO input
-    let input = UTXOInput {
-        txid: "test_txid".to_string(),
-        index: 0,
-    };
+    #[test]
+    fn test_create_unified_transaction() {
+        let input = UnifiedInput {
+            source_type: InputSourceType::BitcoinUTXO,
+            metadata: InputMetadata {
+                id: "utxo_txid".to_string(),
+                value: Some(100_000),
+                timestamp: Some(1670000000),
+                script_pubkey: Some("76a914...88ac".to_string()),
+                pubkey: None,
+                content: None,
+                tags: None,
+            },
+        };
 
-    // Create a UTXO output
-    let output = UTXOOutput {
-        address: "1BitcoinAddress".to_string(),
-        amount: 100_000,
-    };
+        let output = UnifiedOutput {
+            address: Some("1BitcoinAddress...".to_string()),
+            value: Some(90_000),
+            metadata: None,
+        };
 
-    // Create a Nostr event
-    let event = NostrEvent {
-        event_id: "event_id".to_string(),
-        event_data: "Test event".to_string(),
-        timestamp: 1672531200,
-    };
+        let transaction = UnifiedTransaction {
+            id: "txn_123".to_string(),
+            timestamp: 1670001000,
+            state: TransactionState::Pending,
+            inputs: vec![input],
+            outputs: vec![output],
+            signature: None,
+        };
 
-    // Create an Outixs transaction
-    let mut transaction = OutixsTransaction {
-        id: "transaction_id".to_string(),
-        inputs: vec![input],
-        outputs: vec![output],
-        nostr_event: Some(event),
-        timestamp: 1672531200,
-        state: TransactionState::Pending,
-    };
-
-    // Assertions
-    assert_eq!(transaction.id, "transaction_id");
-    assert_eq!(transaction.inputs.len(), 1);
-    assert_eq!(transaction.outputs.len(), 1);
-    assert!(transaction.nostr_event.is_some());
-    assert_eq!(transaction.state, TransactionState::Pending);
-
-    // Update transaction state
-    transaction.fulfill();
-    assert_eq!(transaction.state, TransactionState::Fulfilled);
-
-    transaction.fail();
-    assert_eq!(transaction.state, TransactionState::Failed);
+        assert_eq!(transaction.state, TransactionState::Pending);
+        assert_eq!(transaction.inputs.len(), 1);
+        assert_eq!(transaction.outputs.len(), 1);
+    }
 }
 

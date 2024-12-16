@@ -1,27 +1,22 @@
-use reqwest::blocking::Client;
-use serde_json::Value;
+pub fn fetch_nostr_event(event_id: &str) -> Result<UnifiedInput, reqwest::Error> {
+    let url = format!("https://relay.nostr.example.com/event/{}", event_id);
+    let event: serde_json::Value = reqwest::blocking::get(&url)?.json()?;
+    
+    let nostr_event = UnifiedInput {
+        source_type: InputSourceType::NostrEvent,
+        metadata: InputMetadata {
+            id: event["id"].as_str().unwrap_or_default().to_string(),
+            value: None,
+            timestamp: Some(event["created_at"].as_u64().unwrap_or(0)),
+            script_pubkey: None,
+            pubkey: Some(event["pubkey"].as_str().unwrap_or_default().to_string()),
+            content: Some(event["content"].as_str().unwrap_or_default().to_string()),
+            tags: event["tags"].as_array().map(|tags| {
+                tags.iter().map(|tag| tag.as_str().unwrap_or_default().to_string()).collect()
+            }),
+        },
+    };
 
-pub fn discover_relays(url: &str) -> Result<Vec<String>, reqwest::Error> {
-    let response: Value = Client::new().get(url).send()?.json()?;
-    Ok(response
-        .as_array()
-        .unwrap_or(&vec![])
-        .iter()
-        .filter_map(|v| v.as_str().map(String::from))
-        .collect())
-}
-
-pub fn send_message(relay_url: &str, message: &str) -> Result<(), String> {
-    let client = Client::new();
-    let res = client.post(relay_url).body(message.to_string()).send();
-
-    match res {
-        Ok(response) if response.status().is_success() => Ok(()),
-        Ok(response) => Err(format!(
-            "Failed to send message. HTTP Status: {}",
-            response.status()
-        )),
-        Err(err) => Err(format!("Request error: {}", err)),
-    }
+    Ok(nostr_event)
 }
 
