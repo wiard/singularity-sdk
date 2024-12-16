@@ -1,22 +1,38 @@
-pub fn fetch_utxos(address: &str) -> Result<Vec<UnifiedInput>, reqwest::Error> {
-    let url = format!("https://mempool.space/api/address/{}/utxo", address);
-    let response: Vec<serde_json::Value> = reqwest::blocking::get(&url)?.json()?;
-    
-    let utxos = response.into_iter()
-        .map(|utxo| UnifiedInput {
-            source_type: InputSourceType::BitcoinUTXO,
-            metadata: InputMetadata {
-                id: utxo["txid"].as_str().unwrap_or_default().to_string(),
-                value: Some(utxo["value"].as_u64().unwrap_or(0)),
-                timestamp: None,
-                script_pubkey: Some(utxo["scriptpubkey"].as_str().unwrap_or_default().to_string()),
-                pubkey: None,
-                content: None,
-                tags: None,
-            },
-        })
-        .collect();
+use crate::transaction::{UnifiedInput, InputSourceType, InputMetadata};
+use reqwest::blocking::Client;
+use serde_json::Value;
 
-    Ok(utxos)
+/// Fetch UTXOs for a given Bitcoin address.
+pub fn fetch_utxos(address: &str) -> Result<Vec<UnifiedInput>, String> {
+    let url = format!("https://mempool.space/api/address/{}/utxo", address);
+    let client = Client::new();
+    let response = client.get(&url).send();
+
+    match response {
+        Ok(resp) if resp.status().is_success() => {
+            let utxos: Vec<Value> = resp.json().unwrap_or_default();
+            let unified_inputs = utxos
+                .into_iter()
+                .map(|utxo| UnifiedInput {
+                    source_type: InputSourceType::BitcoinUTXO,
+                    metadata: InputMetadata {
+                        txid: Some(utxo["txid"].as_str().unwrap_or_default().to_string()),
+                        index: utxo["vout"].as_u64().map(|v| v as u32),
+                        amount: utxo["value"].as_u64(),
+                        script_pubkey: Some(utxo["scriptPubKey"].as_str().unwrap_or_default().to_string()),
+                        content: None,
+                        pubkey: None,
+                        tags: Some(Vec::new()),
+                        timestamp: None,
+                        event_id: None,
+                        signature: None,
+                    },
+                })
+                .collect();
+            Ok(unified_inputs)
+        }
+        Ok(resp) => Err(format!("Failed to fetch UTXOs: HTTP {}", resp.status())),
+        Err(err) => Err(format!("Request error: {}", err)),
+    }
 }
 
