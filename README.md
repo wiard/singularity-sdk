@@ -81,9 +81,8 @@ fn main() {
     };
 
     println!("Created transaction: {:?}", transaction);
+   }
 }
-}
-
 
 outixs
 ├── Cargo.lock
