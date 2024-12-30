@@ -5,6 +5,8 @@ pub mod nostr;
 pub mod transaction;
 pub mod utxo;
 pub mod verification;
+pub mod ech;
+pub mod bitmaps;  
 
 pub use nostr::relay::{discover_relays, send_message, fetch_nostr_event};
 pub use utxo::fetch::fetch_utxos;
