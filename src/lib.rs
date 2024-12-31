@@ -7,6 +7,7 @@ pub mod utxo;
 pub mod verification;
 pub mod ech;
 pub mod bitmaps;  
+pub mod agents;
 
 pub use nostr::relay::{discover_relays, send_message, fetch_nostr_event};
 pub use utxo::fetch::fetch_utxos;
