@@ -12,6 +12,7 @@ pub struct Orchestrator {
 }
 
 impl Orchestrator {
+#[allow(dead_code)]
     pub fn new() -> Self {
         Orchestrator {
             agents: Vec::new(),
@@ -19,6 +20,7 @@ impl Orchestrator {
     }
 
     /// Register BitmapAgent
+#[allow(dead_code)]
     pub fn register_bitmap_agent(
         &mut self,
         rpc_url: &str,
@@ -35,6 +37,7 @@ impl Orchestrator {
     }
 
     /// Register UtxoAgent
+#[allow(dead_code)]
     pub fn register_utxo_agent(
         &mut self,
         rpc_url: &str,
@@ -52,6 +55,7 @@ impl Orchestrator {
     }
 
     /// Run all registered agents
+#[allow(dead_code)]
     pub fn run(&self) {
         for agent in &self.agents {
             agent.execute();

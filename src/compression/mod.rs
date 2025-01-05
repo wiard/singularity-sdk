@@ -3,11 +3,13 @@
 /// This module provides functionality to compress and decompress transaction data
 /// for efficient storage and processing within Outixs.
 
+#[allow(dead_code)]
 pub fn compress_data(data: &str) -> Vec<u8> {
     // Simulate compression (replace with actual algorithm like Gzip or similar)
     data.as_bytes().to_vec()
 }
 
+#[allow(dead_code)]
 pub fn decompress_data(data: &[u8]) -> String {
     // Simulate decompression (replace with actual algorithm)
     String::from_utf8(data.to_vec()).expect("Failed to decompress data")

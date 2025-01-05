@@ -2,6 +2,7 @@ use rusqlite::{params, Connection, Result};
 use serde_json::Value;
 
 /// Initialize the SQLite database connection
+#[allow(dead_code)]
 pub fn initialize_db() -> Result<Connection> {
     let conn = Connection::open_in_memory()?;
     conn.execute(
@@ -17,6 +18,7 @@ pub fn initialize_db() -> Result<Connection> {
 }
 
 /// Store UTXOs in the database
+#[allow(dead_code)]
 pub fn store_utxos(conn: &mut Connection, utxos: &Value) -> Result<()> {
     let tx = conn.transaction()?;
     tx.execute(

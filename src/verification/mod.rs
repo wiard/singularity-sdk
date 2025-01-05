@@ -1,6 +1,7 @@
 use serde_json::Value;
 use reqwest::blocking::Client;
 
+#[allow(dead_code)]
 pub fn verify_transaction(tx_id: &str) -> Result<bool, String> {
     let url = format!("https://mempool.space/api/tx/{}/status", tx_id);
     let response = Client::new()

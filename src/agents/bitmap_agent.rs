@@ -9,6 +9,7 @@ pub struct BitmapAgent {
 }
 
 impl BitmapAgent {
+#[allow(dead_code)]
     pub fn new(
         rpc_url: &str,
         rpc_user: &str,

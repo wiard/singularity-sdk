@@ -13,6 +13,7 @@ pub struct UtxoAgent {
 
 impl UtxoAgent {
     /// Create a new UtxoAgent with RPC credentials
+#[allow(dead_code)]
     pub fn new(
         rpc_url: &str,
         rpc_user: &str,
@@ -31,6 +32,7 @@ impl UtxoAgent {
     }
 
     /// Fetch UTXOs for the specified address
+#[allow(dead_code)]
     pub fn fetch_utxos(&self) -> Result<Vec<String>, RpcError> {
         // Convert String to Bitcoin Address
         let address = Address::from_str(&self.address).map_err(|_| {
