@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merkle Tree Dashboard</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="static/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Merkle Tree Integration Dashboard</h1>
+        <nav>
+            <a href="#utxos">UTXOs</a>
+            <a href="#outixs">OUTixs</a>
+            <a href="#nostr">Nostr Events</a>
+            <a href="#bitmaps">Bitmaps</a>
+            <a href="#tree">Merkle Tree</a>
+            <a href="#vision">Vision</a>
+            <a href="freedom_mesh.html">FreedomMesh</a>
+            <a href="luckchain.html">LuckChain</a>
+            <a href="social_universes.html">Social Universes</a>
+            <a href="playconomy.html">Playconomy</a>
+        </nav>
+    </header>
+    <main>
+        <section id="utxos">
+            <h2>UTXO Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Output</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody id="utxo-table"></tbody>
+            </table>
+        </section>
+        <section id="outixs">
+            <h2>OUTixs Parcels</h2>
+            <ul id="outixs-list"></ul>
+        </section>
+        <section id="nostr">
+            <h2>Nostr Events</h2>
+            <ul id="nostr-list"></ul>
+        </section>
+        <section id="bitmaps">
+            <h2>Bitmap Relays</h2>
+            <ul id="bitmap-list"></ul>
+        </section>
+        <section id="tree">
+            <h2>Merkle Tree Visualization</h2>
+            <div id="merkle-tree"></div>
+        </section>
+        <section id="vision">
+            <h2>Vision</h2>
+            <p>The Merkle Tree Dashboard serves as the cornerstone for managing UTXOs, OUTixs, and the interplay between Bitcoin and Nostr. Together, these components create a decentralized ecosystem where data integrity, transparency, and innovation thrive.</p>
+            <p><strong>UTXOs</strong>: The foundational units of Bitcoin transactions, representing spendable outputs that fuel decentralized applications.</p>
+            <p><strong>OUTixs</strong>: Off-chain mirrors of UTXOs that enable enhanced reasoning, integration, and analysis within decentralized systems.</p>
+            <p><strong>Bitcoin</strong>: The immutable financial and trust layer that anchors all interactions, ensuring security and reliability.</p>
+            <p><strong>Nostr</strong>: A decentralized communication protocol that powers event-driven interactions, enabling peer-to-peer connectivity and real-time updates.</p>
+            <h3>Use Cases</h3>
+            <section id="freedommesh">
+                <h4>FreedomMesh: Decentralized Resilience</h4>
+                <p>FreedomMesh leverages this ecosystem to create resilient, peer-to-peer communication networks. It ensures communities stay connected during crises, bypassing traditional infrastructure and empowering self-reliance.</p>
+            </section>
+            <section id="gambling">
+                <h4>LuckChain: Provably Fair Gambling Reinvented</h4>
+                <p>LuckChain uses Bitcoin and OUTixs to establish provably fair gambling systems. Users can independently verify game outcomes, eliminating intermediaries and building trust through decentralized technology.</p>
+            </section>
+            <section id="social-interaction">
+                <h4>Social Universes: Redefining Digital Connections</h4>
+                <p>Social Universes employs Nostr and OUTixs to power decentralized social networks. Users retain ownership of their data and interactions, creating a secure and trust-based platform anchored to Bitcoin.</p>
+            </section>
+            <section id="gaming">
+                <h4>Playconomy: Revolutionizing Gaming Rewards</h4>
+                <p>Playconomy integrates UTXOs and Bitcoin into gaming ecosystems, offering players real-world value through in-game assets. OUTixs ensures secure tracking and provenance of assets, while Nostr enables seamless player communication and interaction.</p>
+                <h5>How Playconomy Works:</h5>
+                <ul>
+                    <li><strong>Earn Value:</strong> Players earn Bitcoin-based rewards for in-game achievements.</li>
+                    <li><strong>Trade Freely:</strong> In-game assets can be traded with peers or converted into real-world assets.</li>
+                    <li><strong>Secure Ownership:</strong> OUTixs guarantees the authenticity and provenance of digital items.</li>
+                </ul>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <p>Powered by Singularity SDK</p>
+    </footer>
+</body>
+</html>
+
