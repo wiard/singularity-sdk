@@ -75,6 +75,13 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -98,17 +105,8 @@
                 <p>UTXO data will appear here...</p>
             </div>
         </section>
-        <section id="vision" class="vision-mission">
-            <h2>Our Vision</h2>
-            <p>The Singularity-SDK aims to create a unified platform that leverages Bitcoin and decentralized technologies to build resilient, interactive systems for the future. Our focus is on transparency, trust, and innovation through a combination of UTXO management, Nostr integration, and dynamic data visualization.</p>
-
-            <h2>Our Mission</h2>
-            <p>Our mission is to empower developers and communities by providing tools to manage decentralized assets, synchronize data, and create meaningful interactions across blockchain ecosystems. We aim to simplify complexity and inspire creativity with open and accessible technologies.</p>
-        </section>
         <section id="interactivity">
             <h2>Bitmap Interactions for Scaling the Metaverse</h2>
-            <button id="dynamic-button">Click me!</button>
-            <button id="toggle-mode">Toggle Light/Dark Mode</button>
             <div class="bitmap-box">
                 <button id="fetch-bitmap">Fetch Bitmap 180757</button>
                 <pre id="bitmap-data">Bitmap data will appear here...</pre>
@@ -119,14 +117,19 @@
             </div>
         </section>
     </main>
+    <section id="vision" class="vision-mission">
+        <h2>Our Vision</h2>
+        <p>The Singularity-SDK aims to create a unified platform that leverages Bitcoin and decentralized technologies to build resilient, interactive systems for the future. Our focus is on transparency, trust, and innovation through a combination of UTXO management, Nostr integration, and dynamic data visualization.</p>
+
+        <h2>Our Mission</h2>
+        <p>Our mission is to empower developers and communities by providing tools to manage decentralized assets, synchronize data, and create meaningful interactions across blockchain ecosystems. We aim to simplify complexity and inspire creativity with open and accessible technologies.</p>
+    </section>
     <footer>
         <p>Powered by Singularity SDK</p>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const utxoButton = document.getElementById('fetch-utxo');
-            const dynamicButton = document.getElementById('dynamic-button');
-            const toggleModeButton = document.getElementById('toggle-mode');
             const apiButton = document.getElementById('fetch-api');
             const bitmapButton = document.getElementById('fetch-bitmap');
 
@@ -180,19 +183,6 @@
                 } catch (error) {
                     bitmapBox.textContent = `Error fetching Bitmap data: ${error.message}`;
                 }
-            });
-
-            // Dynamic Button Click Event
-            dynamicButton.addEventListener('click', () => {
-                dynamicButton.textContent = 'You clicked me!';
-                setTimeout(() => {
-                    dynamicButton.textContent = 'Click me!';
-                }, 2000);
-            });
-
-            // Toggle Light/Dark Mode
-            toggleModeButton.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
             });
 
             // Fetch Data from NOSTR Relays
