@@ -17,6 +17,6 @@ Thumbs.db
 
 # Ignore debug and example build artifacts
 debug/
-examples/
+#examples/
 *.dSYM/
 

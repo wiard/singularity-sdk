@@ -46,6 +46,7 @@ pub fn load_inscriptions_from_file() {
             }
         }
     }
+    println!("Inscriptions loaded from file.");
 }
 
 // Fetch inscription from memory
